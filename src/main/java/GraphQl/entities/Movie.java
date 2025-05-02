@@ -4,20 +4,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-@Table(name="Book")
-@Setter
 @Getter
-public class Book {
+@Setter
+@Entity
+public class Movie {
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    private String name;
     private String title;
-    private String desc;
-    private String author;
-    private double price;
+    private String actor;
     
 }

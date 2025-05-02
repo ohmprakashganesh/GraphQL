@@ -1,29 +1,49 @@
-type Mutation{
-    createBook(book:BookInput):Book
+type Book {
+  id: ID!
+  title: String
+  desc: String
+  author: String
+  price: Float
+  pages: Int
 }
 
-input BookInput{
-    title:String
-    desc:String
-    author:String
-    price :Float
-    pages:Int
+input BookInput {
+  title: String
+  desc: String
+  author: String
+  price: Float
+  pages: Int
 }
 
-type Query{
-    allBooks: [Book!]!
-    getBook(bookId:Int): Book
-
+type Movie {
+  id: ID
+  name: String!
+  title: String!
+  actor: String!
 }
 
-type Book{
+input MovieInput {
+  name: String!
+  title: String!
+  actor: String!
+}
 
-    id:ID!
-    title:String
-    desc:String
-    author:String
-    price :Float
-    pages:Int
-} 
+type Query {
+  # Book Queries
+  allBooks: [Book!]!
+  getBook(bookId: Int): Book
 
+  # Movie Queries
+  getMovie(id: ID!): Movie
+  getMovies: [Movie]
+}
 
+type Mutation {
+  # Book Mutations
+  createBook(book: BookInput): Book
+
+  # Movie Mutations
+  create(input: MovieInput!): Movie
+  update(id: ID!, input: MovieInput): Movie
+  delete(id: ID!): Int
+}
